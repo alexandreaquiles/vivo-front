@@ -1,6 +1,9 @@
-import { WHY_US } from '../../constants'
 import { SectionTitle, WhyUsCard } from '../../components'
 import s from './main-why-us.module.css'
+import axios from 'axios'
+
+const axiosResponse = await axios.get('http://localhost:3000/api/porque-a-vivo');
+const whyUs = axiosResponse.data;
 
 export const MainWhyUsSection = () => {
   return (
@@ -17,7 +20,7 @@ export const MainWhyUsSection = () => {
         </div>
 
         <ul className={s.cards}>
-          {WHY_US.map((item) => (
+          {whyUs.map((item) => (
             <WhyUsCard
               key={item.title}
               image={item.image}
